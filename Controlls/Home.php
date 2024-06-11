@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace App\Controlls;
 
-use App\View;
+use App\Http\View;
+use App\Controlls\Controlls;
 
-class Home{
+class Home extends Controlls{
     public function home(): View
     {
         return View::make('home');
@@ -17,6 +18,18 @@ class Home{
         $params = array( 'data' => array(
             'sendTime' => time(),
             'message' => 'Message from func homeWithParams',
+        ));
+        return View::make('home', $params);
+    }
+
+    public function getRequest(): View
+    {
+        // if null return ''
+        $message = $this->request->get('m');
+
+        $params = array( 'data' => array(
+            'sendTime' => time(),
+            'message' => "Message from get method: $message",
         ));
         return View::make('home', $params);
     }

@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace App;
 
-use App\View;
+use App\Http\View;
 
 class Router{
 
@@ -27,7 +27,7 @@ class Router{
         return $this->register('post', $path, $action);
     }
 
-    public function resolve(string $path, string $requestMethod)
+    public function resolve(string $path, string $requestMethod, \App\Http\Request $request)
     {
         $action = $this->routes[$requestMethod][$path] ?? null;
 
@@ -42,8 +42,8 @@ class Router{
         if(is_array($action)){
             [$class, $method] = $action;
 
-            if(class_exists($class)){
-                $class = new $class();
+            if(class_exists($class) && is_subclass_of($class, \App\Controlls\Controlls::class)){
+                $class = new $class($request);
 
                 if(method_exists($class, $method)){
                     return call_user_func_array([$class, $method], []);
