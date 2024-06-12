@@ -19,7 +19,11 @@ $router
     ->get('/home-with-params', [App\Controlls\Home::class, 'homeWithParams'])
     
     // display data send to get metod /get-request?m=
-    ->get('/get-request', [App\Controlls\Home::class, 'getRequest']);
+    ->get('/get-request', [App\Controlls\Home::class, 'getRequest'])
+    ->get('/get-request-send-response', [App\Controlls\Home::class, 'getRequestSendResponse'])
+    
+    // no view
+    ->get('/no-view', [App\Controlls\Home::class, 'noView']);
 
 $app = new App\App($router);
 $app->run();

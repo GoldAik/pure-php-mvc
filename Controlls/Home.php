@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Controlls;
 
+use App\Http\Response;
 use App\Http\View;
 use App\Controlls\Controlls;
 
@@ -32,5 +33,19 @@ class Home extends Controlls{
             'message' => "Message from get method: $message",
         ));
         return View::make('home', $params);
+    }
+
+    public function getRequestSendResponse(): Response
+    {
+        // if null return ''
+        $message = $this->request->get('m');
+        $time = time();
+
+        return Response::do(200, Response::DEFAULT_HEADER, "Message: $message, Time: $time");
+    }
+
+    public function noView(): View
+    {
+        return View::make('no-view');
     }
 }

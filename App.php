@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App;
 
+require_once \APP_PATH . '/Http/Response.php';
 require_once \APP_PATH . '/Http/View.php';
 require_once \APP_PATH . '/Http/Request.php';
 
