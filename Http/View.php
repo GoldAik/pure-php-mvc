@@ -7,11 +7,12 @@ namespace App\Http;
 use App\Http\Response;
 use App\App;
 
-class View extends Response{
+class View extends Response
+{
 
-    public function __construct(protected string $view, protected array $params = [], private $statusCode = 200, private $header = self::DEFAULT_HEADER)
+    public function __construct(protected string $view, protected array $params = [])
     {
-        parent::__construct(statusCode: 200, header: Response::DEFAULT_HEADER, body: '');
+        parent::__construct(statusCode: 200, headers: ['Content-Type' => 'text/html'], body: '');
     }
 
     public static function make(string $view, array $params = []): static
@@ -48,7 +49,8 @@ class View extends Response{
     public function __toString(): string
     {
         $body = $this->render();
-        parent::setBody($body);
+        self::setBody($body);
+        
         return parent::__toString();
     }
 }

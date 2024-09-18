@@ -1,0 +1,23 @@
+<?php
+
+declare(strict_types = 1);
+
+namespace App\Http;
+
+require_once \APP_PATH . '/Http/Response.php';
+
+use App\Http\Response;
+
+class JsonResponse extends Response
+{
+    public static function make(int $statusCode = 200, array $data): static
+    {
+        $headers = [
+            'Content-Type' => 'application/json',
+        ];
+        
+        $json = json_encode($data);
+
+        return new static(statusCode: $statusCode, headers: $headers, body: $json);
+    }
+}

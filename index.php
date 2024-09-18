@@ -21,6 +21,9 @@ $router
     // display data send to get metod /get-request?m=
     ->get('/get-request', [App\Controlls\Home::class, 'getRequest'])
     ->get('/get-request-send-response', [App\Controlls\Home::class, 'getRequestSendResponse'])
+
+    //json response
+    ->get('/get-request-send-response-as-json', [App\Controlls\Home::class, 'getRequestSendJsonResponse'])
     
     // no view
     ->get('/no-view', [App\Controlls\Home::class, 'noView']);
