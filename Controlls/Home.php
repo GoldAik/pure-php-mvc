@@ -61,6 +61,37 @@ class Home extends Controlls{
         return JsonResponse::make(200, $data);
     }
 
+    public function getUser($userId): JsonResponse
+    {
+        $data = [
+            'message' => $userId,
+            'timestamp' => time(),
+        ];
+
+        return JsonResponse::make(200, $data);
+    }
+
+    public function getBook($shelfId, $bookId): JsonResponse
+    {
+        $data = [
+            'shelfId' => $shelfId,
+            'bookId' => $bookId,
+            'timestamp' => time(),
+        ];
+
+        return JsonResponse::make(200, $data);
+    }
+
+    public function getNegativeNumber($num): JsonResponse
+    {
+        $data = [
+            'num' => $num,
+            'timestamp' => time(),
+        ];
+
+        return JsonResponse::make(200, $data);
+    }
+
     public function noView(): View
     {
         return View::make('no-view');

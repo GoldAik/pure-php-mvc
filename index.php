@@ -24,6 +24,11 @@ $router
 
     //json response
     ->get('/get-request-send-response-as-json', [App\Controlls\Home::class, 'getRequestSendJsonResponse'])
+
+    //regex
+    ->get('/user/{id}', [App\Controlls\Home::class, 'getUser'])
+    ->get('/shelf/{<+int>:shelf_id}/book/{<+int>:book_id}', [App\Controlls\Home::class, 'getBook'])
+    ->get('/negative-numbers/{<-int>:num}', [App\Controlls\Home::class, 'getNegativeNumber'])
     
     // no view
     ->get('/no-view', [App\Controlls\Home::class, 'noView']);
