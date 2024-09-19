@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 define('APP_PATH', __DIR__);
 define('VIEW_PATH', __DIR__ . '/views');
+define('DOMAIN', '127.0.0.1');
 
 require_once \APP_PATH . '/Router.php';
 require_once \APP_PATH . '/App.php';

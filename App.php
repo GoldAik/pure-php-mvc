@@ -7,17 +7,21 @@ namespace App;
 require_once \APP_PATH . '/Http/Response.php';
 require_once \APP_PATH . '/Http/View.php';
 require_once \APP_PATH . '/Http/Request.php';
+require_once \APP_PATH . '/Http/Session.php';
 
 use App\Router;
 use App\Http\View;
 use App\Http\Request;
+use App\Http\Session;
 
 class App{
     private Router $router;
+    private Session $session;
 
     public function __construct(Router $router)
     {
         $this->router = $router;
+        $this->session = new Session();
     }
 
     public function run()
