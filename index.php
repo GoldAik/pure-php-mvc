@@ -31,6 +31,8 @@ $router
     ->get('/shelf/{<+int>:shelf_id}/book/{<+int>:book_id}', [App\Controlls\Home::class, 'getBook'])
     ->get('/negative-numbers/{<-int>:num}', [App\Controlls\Home::class, 'getNegativeNumber'])
     
+    ->get('/get/users', [App\Controlls\Home::class, 'getUsers'])
+    
     // no view
     ->get('/no-view', [App\Controlls\Home::class, 'noView']);
 

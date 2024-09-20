@@ -5,12 +5,15 @@ declare(strict_types = 1);
 namespace App\Controlls;
 
 require_once \APP_PATH . '/Http/JsonResponse.php';
+require_once \APP_PATH . '/Models/User.php';
+
+use App\Controlls\Controlls;
 
 use App\Http\Response;
 use App\Http\JsonResponse;
 use App\Http\View;
 
-use App\Controlls\Controlls;
+use App\Models\User as UserModel;
 
 class Home extends Controlls{
     public function home(): View
@@ -86,6 +89,19 @@ class Home extends Controlls{
     {
         $data = [
             'num' => $num,
+            'timestamp' => time(),
+        ];
+
+        return JsonResponse::make(200, $data);
+    }
+
+    public function getUsers(): JsonResponse
+    {
+        $userModel = new UserModel();
+        $users = $userModel->getAllUsers();
+
+        $data = [
+            'users' => $users,
             'timestamp' => time(),
         ];
 
