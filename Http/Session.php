@@ -50,7 +50,7 @@ class Session
         return true;
     }
 
-    public static function set(string $key, $value): bool
+    public static function set(string $key, mixed $value): bool
     {
         if(!self::start()) return false;
 
@@ -59,16 +59,16 @@ class Session
         return true;
     }
 
-    public static function get(string $key)
+    public static function get(string $key): mixed
     {
-        if(!self::start()) return '';
+        if(!self::start()) return null;
 
-        $value = $_SESSION[$key] ?? '';
+        $value = $_SESSION[$key] ?? null;
 
         return $value;
     }
 
-    public static function getAndUnset(string $key)
+    public static function getAndUnset(string $key): mixed
     {
         $value = self::get($key);        
 
