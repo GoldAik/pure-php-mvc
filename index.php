@@ -11,6 +11,7 @@ require_once \APP_PATH . '/App.php';
 
 require_once \APP_PATH. '/Controlls/Controlls.php';
 require_once \APP_PATH. '/Controlls/Home.php';
+require_once \APP_PATH. '/Controlls/User.php';
 
 $router = new App\Router();
 
@@ -31,7 +32,14 @@ $router
     ->get('/shelf/{<+int>:shelf_id}/book/{<+int>:book_id}', [App\Controlls\Home::class, 'getBook'])
     ->get('/negative-numbers/{<-int>:num}', [App\Controlls\Home::class, 'getNegativeNumber'])
     
-    ->get('/get/users', [App\Controlls\Home::class, 'getUsers'])
+    ->get('/get/users', [App\Controlls\User::class, 'getUsers'])
+
+    //orm
+    ->get('/get/users-models', [App\Controlls\User::class, 'getUsersModels'])
+    ->get('/get/user/{<+int>:id}', [App\Controlls\User::class, 'getUser'])
+    ->get('/delete/user/{<+int>:id}', [App\Controlls\User::class, 'deleteUser'])
+    ->get('/edit/user/{<+int>:id}/username/{username}', [App\Controlls\User::class, 'editUsername'])
+    ->get('/add/user/{username}', [App\Controlls\User::class, 'addUser'])
     
     // no view
     ->get('/no-view', [App\Controlls\Home::class, 'noView']);

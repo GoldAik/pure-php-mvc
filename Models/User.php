@@ -12,14 +12,11 @@ class User extends DatabaseDecorator{
 
     public function getAllUsers(): array
     {
-        return self::executeWithErrorHandling(function() {
-            $sql = "SELECT * FROM Users";
-            $stmt = self::getPDO()->prepare($sql);
-
-            if($stmt === false)
-                throw new \PDOException("Failed to prepare statement: " . implode(" ", self::getPDO()->errorInfo())); 
-
-            $stmt->execute([]);
+        $query = "SELECT * FROM Users";
+        
+        return self::executeWithErrorHandling(function() use ($query) {
+            $stmt = self::prepareQuery($query);
+            $stmt->execute();
             return $stmt->fetchAll();
         });
     }

@@ -10,11 +10,21 @@ use App\Models\Database;
 
 class DatabaseDecorator extends Database{
 
-    protected function executeWithErrorHandling(callable $callback, ...$params)
+    protected static function prepareQuery($query)
+    {
+        $stmt = self::getPDO()->prepare($query);
+
+        if($stmt === false)
+            throw new \PDOException("Failed to prepare statement: " . implode(" ", self::getPDO()->errorInfo())); 
+        else
+            return $stmt;
+    }
+
+    protected static function executeWithErrorHandling(callable $callback, ...$params)
     {
         try {
             return $callback(...$params);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             error_log("Error executing SQL. Error: " . $e->getMessage());
             return [];
         } catch (\Exception $e) {
