@@ -5,11 +5,19 @@ declare(strict_types = 1);
 namespace App\Models;
 
 require_once \APP_PATH . '/Models/DatabaseDecorator.php';
+require_once \APP_PATH . '/Utils/Validator.php';
 
 use App\Models\DatabaseDecorator;
+use App\Utils\Validator;
 
 class DatabaseModel extends DatabaseDecorator {
     protected static $table;
+    protected Validator $validator;
+
+    public function __construct()
+    {
+        $this->validator = new Validator();
+    }
 
     public static function all(): array
     {
@@ -75,7 +83,7 @@ class DatabaseModel extends DatabaseDecorator {
 
     protected function create()
     {
-        $fields = get_object_vars($this);
+        $fields = $this->getSelfVars();
         $columns = implode(", ", array_keys($fields));
         $placeholders = ':' . implode(", :", array_keys($fields));
         
@@ -97,7 +105,7 @@ class DatabaseModel extends DatabaseDecorator {
 
     protected function update()
     {
-        $fields = get_object_vars($this);
+        $fields = $this->getSelfVars();
         unset($fields['id']);
 
         $set = '';
@@ -119,8 +127,36 @@ class DatabaseModel extends DatabaseDecorator {
         });
     }
 
-    protected function validate()
+    protected function validate(): bool
     {
+        $fields = $this->getSelfVars();
+
+        foreach($fields as $key => $value){
+
+            if(!$this->validator->byRules($value, $key))
+                return false;
+            
+            $method = 'validate'.ucfirst($key);
+            if(method_exists($this, $method)){
+                if(!$this->$method()){
+                    return false;
+                }
+            }
+        }
+
         return true; 
+    }
+
+    public function getValidationErrors(): array
+    {
+        return $this->validator->getErrors();
+    }
+
+    protected function getSelfVars(): array
+    {
+        $vars = get_object_vars($this);
+        unset($vars['validator']);
+
+        return $vars;
     }
 }

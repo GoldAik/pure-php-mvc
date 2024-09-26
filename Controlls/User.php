@@ -77,11 +77,17 @@ class User extends Controlls{
         if($user){
             $user->username = $username;
             $success = $user->save();
+
+            $errors = $user->getValidationErrors();
         }
+
+        // find user from db
+        $user = UserModel::find($id);
 
         $data = [
             'user' => $user,
             'success' => $success,
+            'errors' => $errors,
             'timestamp' => time(),
         ];
 
@@ -95,10 +101,12 @@ class User extends Controlls{
         $user->password = password_hash($username, PASSWORD_DEFAULT);
         $user->email = $username . '@mail.com';
         $success = $user->save();
+        $errors = $user->getValidationErrors();
 
         $data = [
             'user' => $user,
             'success' => $success,
+            'errors' => $errors,
             'timestamp' => time(),
         ];
 
