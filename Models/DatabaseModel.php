@@ -34,6 +34,17 @@ class DatabaseModel extends DatabaseDecorator {
         });
     }
 
+    public static function where($key, $value) {
+        $query = "SELECT * FROM " . static::$table . " WHERE $key = :$key";
+        
+        return self::executeWithErrorHandling(function() use ($query, $key, $value) {
+            $stmt = self::prepareQuery($query);
+            $stmt->bindParam(":$key", $value);
+            $stmt->execute();
+            return $stmt->fetchAll(\PDO::FETCH_CLASS, static::class);
+        });
+    }
+
     public function delete()
     {
         if(!property_exists($this, 'id'))

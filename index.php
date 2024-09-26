@@ -12,6 +12,7 @@ require_once \APP_PATH . '/App.php';
 require_once \APP_PATH. '/Controlls/Controlls.php';
 require_once \APP_PATH. '/Controlls/Home.php';
 require_once \APP_PATH. '/Controlls/User.php';
+require_once \APP_PATH. '/Controlls/Post.php';
 
 $router = new App\Router();
 
@@ -40,6 +41,10 @@ $router
     ->get('/delete/user/{<+int>:id}', [App\Controlls\User::class, 'deleteUser'])
     ->get('/edit/user/{<+int>:id}/username/{username}', [App\Controlls\User::class, 'editUsername'])
     ->get('/add/user/{username}', [App\Controlls\User::class, 'addUser'])
+
+    ->get('/user/{<+int>:id}/posts', [App\Controlls\Post::class, 'getUserPosts'])
+    ->get('/user/{<+int>:id}/post/add', [App\Controlls\Post::class, 'addUserPost'])
+    ->get('/post/{<+int>:id}/user', [App\Controlls\Post::class, 'getUserOfPost'])
     
     // no view
     ->get('/no-view', [App\Controlls\Home::class, 'noView']);
