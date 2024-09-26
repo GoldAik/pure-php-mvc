@@ -42,9 +42,13 @@ $router
     ->get('/edit/user/{<+int>:id}/username/{username}', [App\Controlls\User::class, 'editUsername'])
     ->get('/add/user/{username}', [App\Controlls\User::class, 'addUser'])
 
+    //relations
     ->get('/user/{<+int>:id}/posts', [App\Controlls\Post::class, 'getUserPosts'])
     ->get('/user/{<+int>:id}/post/add', [App\Controlls\Post::class, 'addUserPost'])
     ->get('/post/{<+int>:id}/user', [App\Controlls\Post::class, 'getUserOfPost'])
+
+    //view layout
+    ->get('/posts', [App\Controlls\Post::class, 'getPosts'])
     
     // no view
     ->get('/no-view', [App\Controlls\Home::class, 'noView']);
