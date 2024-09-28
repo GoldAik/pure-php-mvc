@@ -8,7 +8,7 @@ require_once \APP_PATH . '/Http/JsonResponse.php';
 require_once \APP_PATH . '/Models/User.php';
 require_once \APP_PATH . '/Models/UserModel.php';
 
-use App\Controlls\Controlls;
+use App\Controlls\_Base\Controlls;
 
 use App\Http\Response;
 use App\Http\JsonResponse;

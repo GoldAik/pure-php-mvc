@@ -56,7 +56,7 @@ class Router{
         if (is_array($action)) {
             [$class, $method] = $action;
 
-            if (class_exists($class) && is_subclass_of($class, \App\Controlls\Controlls::class)) {
+            if (class_exists($class) && is_subclass_of($class, \App\Controlls\_Base\Controlls::class)) {
                 $instance = new $class($request);
 
                 if (method_exists($instance, $method)) {

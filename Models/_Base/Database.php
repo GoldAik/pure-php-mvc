@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace App\Models;
+namespace App\Models\_Base;
 
 class Database{
 
@@ -23,7 +23,6 @@ class Database{
             $dbConfig['password'] ?? throw new \RuntimeException('Config hasnt connection data');
 
             
-
             if(!$dbConfig) throw new \RuntimeException('Config hasnt connection data');
 
             $dsn = "mysql:host={$dbConfig['host']};dbname={$dbConfig['name']};charset=utf8";

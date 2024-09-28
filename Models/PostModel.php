@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace App\Models;
 
-require_once \APP_PATH . '/Models/DatabaseModel.php';
+require_once \APP_PATH . '/Models/_Base/DatabaseModel.php';
 
-use App\Models\DatabaseModel;
+use App\Models\_Base\DatabaseModel;
 use App\Models\UserModel;
 
 class PostModel extends DatabaseModel {

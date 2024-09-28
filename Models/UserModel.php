@@ -4,15 +4,15 @@ declare(strict_types = 1);
 
 namespace App\Models;
 
-require_once \APP_PATH . '/Models/DatabaseModel.php';
+require_once \APP_PATH . '/Models/_Base/DatabaseModel.php';
 require_once \APP_PATH . '/Models/PostModel.php';
 
-require_once \APP_PATH . '/Utils/Validator.php';
+require_once \APP_PATH . '/Models/_Base/Validator.php';
 
-use App\Models\DatabaseModel;
+use App\Models\_Base\DatabaseModel;
 use App\Models\PostModel;
 
-use App\Utils\Validator;
+use App\Models\_Base\Validator;
 
 class UserModel extends DatabaseModel {
     protected static $table = 'Users';

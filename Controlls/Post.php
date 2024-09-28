@@ -10,7 +10,7 @@ require_once \APP_PATH . '/Http/View.php';
 require_once \APP_PATH . '/Models/UserModel.php';
 require_once \APP_PATH . '/Models/PostModel.php';
 
-use App\Controlls\Controlls;
+use App\Controlls\_Base\Controlls;
 
 use App\Http\JsonResponse;
 use App\Http\View;

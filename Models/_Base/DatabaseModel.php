@@ -2,13 +2,13 @@
 
 declare(strict_types = 1);
 
-namespace App\Models;
+namespace App\Models\_Base;
 
-require_once \APP_PATH . '/Models/DatabaseDecorator.php';
-require_once \APP_PATH . '/Utils/Validator.php';
+require_once \APP_PATH . '/Models/_Base/DatabaseDecorator.php';
+require_once \APP_PATH . '/Models/_Base/Validator.php';
 
-use App\Models\DatabaseDecorator;
-use App\Utils\Validator;
+use App\Models\_Base\DatabaseDecorator;
+use App\Models\_Base\Validator;
 
 class DatabaseModel extends DatabaseDecorator {
     protected static $table;

@@ -2,11 +2,11 @@
 
 declare(strict_types = 1);
 
-namespace App\Models;
+namespace App\Models\_Base;
 
-require_once \APP_PATH . '/Models/Database.php';
+require_once \APP_PATH . '/Models/_Base/Database.php';
 
-use App\Models\Database;
+use App\Models\_Base\Database;
 
 class DatabaseDecorator extends Database{
 

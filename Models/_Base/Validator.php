@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace App\Utils;
+namespace App\Models\_Base;
 
 class Validator{
     protected $rules;

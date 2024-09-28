@@ -9,7 +9,7 @@ define('DOMAIN', '127.0.0.1');
 require_once \APP_PATH . '/Router.php';
 require_once \APP_PATH . '/App.php';
 
-require_once \APP_PATH. '/Controlls/Controlls.php';
+require_once \APP_PATH. '/Controlls/_Base/Controlls.php';
 require_once \APP_PATH. '/Controlls/Home.php';
 require_once \APP_PATH. '/Controlls/User.php';
 require_once \APP_PATH. '/Controlls/Post.php';
