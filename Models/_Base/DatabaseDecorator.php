@@ -7,6 +7,7 @@ namespace App\Models\_Base;
 require_once \APP_PATH . '/Models/_Base/Database.php';
 
 use App\Models\_Base\Database;
+use App\Log;
 
 class DatabaseDecorator extends Database{
 
@@ -24,12 +25,22 @@ class DatabaseDecorator extends Database{
     {
         try {
             return $callback(...$params);
+            
         } catch (\PDOException $e) {
-            error_log("Error executing SQL. Error: " . $e->getMessage());
-            return [];
+            Log::exception($e);
+
+            if(\DEBUG_MODE)
+                throw $e;
+            else
+                return null;
+
         } catch (\Exception $e) {
-            error_log("General error: " . $e->getMessage());
-            return [];
+            Log::exception($e);
+
+            if(\DEBUG_MODE)
+                throw $e;
+            else
+                return null;
         }
     }
 }

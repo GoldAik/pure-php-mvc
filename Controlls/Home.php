@@ -66,10 +66,10 @@ class Home extends Controlls{
         return JsonResponse::make(200, $data);
     }
 
-    public function getUser($userId): JsonResponse
+    public function getValue($value): JsonResponse
     {
         $data = [
-            'message' => $userId,
+            'message' => $value,
             'timestamp' => time(),
         ];
 

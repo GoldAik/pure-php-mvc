@@ -27,7 +27,7 @@ class DatabaseModel extends DatabaseDecorator {
             $stmt = self::prepareQuery($query);
             $stmt->execute();
             return $stmt->fetchAll(\PDO::FETCH_CLASS, static::class);
-        });
+        }) ?? [];
     }
 
     public static function find($id): self|false
@@ -39,10 +39,11 @@ class DatabaseModel extends DatabaseDecorator {
             $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetchObject(static::class);
-        });
+        }) ?? false;
     }
 
-    public static function where($key, $value) {
+    public static function where($key, $value): array
+    {
         $query = "SELECT * FROM " . static::$table . " WHERE $key = :$key";
         
         return self::executeWithErrorHandling(function() use ($query, $key, $value) {
@@ -50,10 +51,10 @@ class DatabaseModel extends DatabaseDecorator {
             $stmt->bindParam(":$key", $value);
             $stmt->execute();
             return $stmt->fetchAll(\PDO::FETCH_CLASS, static::class);
-        });
+        }) ?? [];
     }
 
-    public function delete()
+    public function delete(): bool
     {
         if(!property_exists($this, 'id'))
             return false;
@@ -64,10 +65,10 @@ class DatabaseModel extends DatabaseDecorator {
             $stmt = self::prepareQuery($query);
             $stmt->bindParam(':id', $this->id, \PDO::PARAM_INT);
             return $stmt->execute();
-        });
+        }) ?? false;
     }
 
-    public function save()
+    public function save(): bool
     {
         if(property_exists($this, 'id') && $this->id) {
             if($this->validate()) 
@@ -81,7 +82,7 @@ class DatabaseModel extends DatabaseDecorator {
         return false;
     }
 
-    protected function create()
+    protected function create(): bool
     {
         $fields = $this->getSelfVars();
         $columns = implode(", ", array_keys($fields));
@@ -100,10 +101,10 @@ class DatabaseModel extends DatabaseDecorator {
                 return true;
             }
             return false;
-        });        
+        }) ?? false;        
     }
 
-    protected function update()
+    protected function update(): bool
     {
         $fields = $this->getSelfVars();
         unset($fields['id']);
@@ -124,7 +125,7 @@ class DatabaseModel extends DatabaseDecorator {
                 $stmt->bindValue(":$key", $value);
             }
             return $stmt->execute();
-        });
+        }) ?? false;
     }
 
     protected function validate(): bool

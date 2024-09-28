@@ -16,11 +16,11 @@ class Database{
             else
                 throw new \RuntimeException('Config file not found');
 
-            $dbConfig = $config['connection'] ?? throw new \RuntimeException('Config hasnt connection data');
-            $dbConfig['host'] ?? throw new \RuntimeException('Config hasnt connection data');
-            $dbConfig['name'] ?? throw new \RuntimeException('Config hasnt connection data');
-            $dbConfig['user'] ?? throw new \RuntimeException('Config hasnt connection data');
-            $dbConfig['password'] ?? throw new \RuntimeException('Config hasnt connection data');
+            $dbConfig = $config['connection'] ?? throw new \RuntimeException('The configuration file does not have enough variables');
+            $dbConfig['host'] ?? throw new \RuntimeException('The configuration file does not have enough variables');
+            $dbConfig['name'] ?? throw new \RuntimeException('The configuration file does not have enough variables');
+            $dbConfig['user'] ?? throw new \RuntimeException('The configuration file does not have enough variables');
+            $dbConfig['password'] ?? throw new \RuntimeException('The configuration file does not have enough variables');
 
             
             if(!$dbConfig) throw new \RuntimeException('Config hasnt connection data');

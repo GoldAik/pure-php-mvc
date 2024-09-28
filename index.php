@@ -4,7 +4,9 @@ declare(strict_types = 1);
 
 define('APP_PATH', __DIR__);
 define('VIEW_PATH', __DIR__ . '/views');
+define('LOG_PATH', __DIR__ . '/logs');
 define('DOMAIN', '127.0.0.1');
+define('DEBUG_MODE', false);
 
 require_once \APP_PATH . '/Router.php';
 require_once \APP_PATH . '/App.php';
@@ -29,15 +31,15 @@ $router
     ->get('/get-request-send-response-as-json', [App\Controlls\Home::class, 'getRequestSendJsonResponse'])
 
     //regex
-    ->get('/user/{id}', [App\Controlls\Home::class, 'getUser'])
+    ->get('/value/{value}', [App\Controlls\Home::class, 'getValue'])
     ->get('/shelf/{<+int>:shelf_id}/book/{<+int>:book_id}', [App\Controlls\Home::class, 'getBook'])
     ->get('/negative-numbers/{<-int>:num}', [App\Controlls\Home::class, 'getNegativeNumber'])
     
     ->get('/get/users', [App\Controlls\User::class, 'getUsers'])
 
     //orm
-    ->get('/get/users-models', [App\Controlls\User::class, 'getUsersModels'])
-    ->get('/get/user/{<+int>:id}', [App\Controlls\User::class, 'getUser'])
+    ->get('/users', [App\Controlls\User::class, 'getUsersModels'])
+    ->get('/user/{<+int>:id}', [App\Controlls\User::class, 'getUser'])
     ->get('/delete/user/{<+int>:id}', [App\Controlls\User::class, 'deleteUser'])
     ->get('/edit/user/{<+int>:id}/username/{username}', [App\Controlls\User::class, 'editUsername'])
     ->get('/add/user/{username}', [App\Controlls\User::class, 'addUser'])
