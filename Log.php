@@ -20,6 +20,7 @@ class Log{
         if(!is_dir($dirPath)){
             if(!mkdir($dirPath, 0755, true)){
                 if(\DEBUG_MODE)
+                    // infinity loop if catch by ErrorHandling? TODO
                     throw new \RuntimeException('Unable to create directory for logs');
                 else
                     return;

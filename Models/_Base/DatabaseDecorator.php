@@ -27,20 +27,20 @@ class DatabaseDecorator extends Database{
             return $callback(...$params);
             
         } catch (\PDOException $e) {
-            Log::exception($e);
-
             if(\DEBUG_MODE)
                 throw $e;
             else
-                return null;
+                Log::exception($e);
+
+            return null;
 
         } catch (\Exception $e) {
-            Log::exception($e);
-
             if(\DEBUG_MODE)
                 throw $e;
             else
-                return null;
+                Log::exception($e);
+
+            return null;
         }
     }
 }

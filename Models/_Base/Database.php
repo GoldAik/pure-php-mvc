@@ -28,14 +28,13 @@ class Database{
             $dsn = "mysql:host={$dbConfig['host']};dbname={$dbConfig['name']};charset=utf8";
 
             return new \PDO($dsn, $dbConfig['user'], $dbConfig['password'], [
-                \PDO::ATTR_ERRMODE => \PDO::ERRMODE_SILENT,
+                \PDO::ATTR_ERRMODE => \DEBUG_MODE ? \PDO::ERRMODE_EXCEPTION : \PDO::ERRMODE_SILENT,
                 \PDO::ATTR_EMULATE_PREPARES => false,
                 \PDO::ATTR_STRINGIFY_FETCHES => false
             ]);
 
         }catch(\PDOException $e){
-            error_log($e->getMessage());
-            throw new \RuntimeException('Database connection failed');
+            throw new \RuntimeException('Database connection failed '.$e->getMessage(), 0, $e);
         }
     }
 

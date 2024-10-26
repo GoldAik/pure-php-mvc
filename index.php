@@ -8,6 +8,15 @@ define('LOG_PATH', __DIR__ . '/logs');
 define('DOMAIN', '127.0.0.1');
 define('DEBUG_MODE', true);
 
+if(file_exists(\APP_PATH . '/ErrorHandler.php'))
+    require_once \APP_PATH . '/ErrorHandler.php';
+else{
+    if(\DEBUG_MODE) throw new \RuntimeException('Unable to locate the ErrorHandler.php file');
+    else exit;
+}
+
+new App\ErrorHandler();
+
 require_once \APP_PATH . '/Router.php';
 require_once \APP_PATH . '/App.php';
 

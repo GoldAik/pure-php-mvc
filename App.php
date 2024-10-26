@@ -17,6 +17,7 @@ use App\Log;
 use App\Http\View;
 use App\Http\Request;
 use App\Http\Session;
+use Error;
 
 class App{
     private Router $router;
@@ -31,33 +32,21 @@ class App{
     public function run()
     {
         try{
-            set_error_handler([$this, "warningHandler"]);
-
             $request = new Request();
             $uri = Request::getUri();
             $method = Request::getMethod();
+            
             echo $this->router->resolve($uri, $method, $request);
+
         }catch(\Throwable $e){
-            Log::throwable($e);
-
+            $err = new \RuntimeException('An error occurred during request processing. ' . $e->getMessage(), 0, $e);
+            
             if(\DEBUG_MODE)
-                echo $e;
+                throw $err;
             else
-                echo '404';
+                Log::throwable($err);
+
+            echo '404';
         }
-    }
-
-    public function warningHandler($errno, $errstr, $errfile, $errline)
-    {
-        if($errno == E_WARNING) {
-            Log::warning($errstr);
-
-            if(\DEBUG_MODE)
-                echo $errstr;
-            else
-                return true;
-        }
-
-        return false; 
     }
 }

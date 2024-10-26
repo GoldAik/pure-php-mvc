@@ -18,6 +18,6 @@ class User extends DatabaseDecorator{
             $stmt = self::prepareQuery($query);
             $stmt->execute();
             return $stmt->fetchAll();
-        });
+        }) ?? [];
     }
 }
