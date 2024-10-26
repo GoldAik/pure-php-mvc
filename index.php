@@ -6,7 +6,7 @@ define('APP_PATH', __DIR__);
 define('VIEW_PATH', __DIR__ . '/views');
 define('LOG_PATH', __DIR__ . '/logs');
 define('DOMAIN', '127.0.0.1');
-define('DEBUG_MODE', false);
+define('DEBUG_MODE', true);
 
 require_once \APP_PATH . '/Router.php';
 require_once \APP_PATH . '/App.php';

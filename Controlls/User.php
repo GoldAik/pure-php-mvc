@@ -26,7 +26,7 @@ class User extends Controlls{
             'timestamp' => time(),
         ];
 
-        return JsonResponse::make(200, $data);
+        return JsonResponse::make($data, statusCode: 200);
     }
 
     public function getUsersModels(): JsonResponse
@@ -38,7 +38,7 @@ class User extends Controlls{
             'timestamp' => time(),
         ];
 
-        return JsonResponse::make(200, $data);
+        return JsonResponse::make($data, statusCode: 200);
     }
 
     public function getUser($id): JsonResponse
@@ -50,7 +50,7 @@ class User extends Controlls{
             'timestamp' => time(),
         ];
 
-        return JsonResponse::make(200, $data);
+        return JsonResponse::make($data, statusCode: 200);
     }
 
     public function deleteUser($id): JsonResponse
@@ -66,7 +66,7 @@ class User extends Controlls{
             'timestamp' => time(),
         ];
 
-        return JsonResponse::make(200, $data);
+        return JsonResponse::make($data, statusCode: 200);
     }
 
     public function editUsername($id, $username): JsonResponse
@@ -91,7 +91,7 @@ class User extends Controlls{
             'timestamp' => time(),
         ];
 
-        return JsonResponse::make(200, $data);
+        return JsonResponse::make($data, statusCode: 200);
     }
 
     public function addUser($username): JsonResponse
@@ -110,6 +110,6 @@ class User extends Controlls{
             'timestamp' => time(),
         ];
 
-        return JsonResponse::make(200, $data);
+        return JsonResponse::make($data, statusCode: 200);
     }
 }

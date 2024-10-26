@@ -10,7 +10,7 @@ use App\Http\Response;
 
 class JsonResponse extends Response
 {
-    public static function make(int $statusCode = 200, array $data): static
+    public static function make(array $data, int $statusCode = 200): static
     {
         $headers = [
             'Content-Type' => 'application/json',

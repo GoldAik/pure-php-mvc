@@ -34,7 +34,7 @@ class Post extends Controlls{
             'timestamp' => time(),
         ];
 
-        return JsonResponse::make(200, $data);
+        return JsonResponse::make($data, statusCode: 200);
     }
 
     public function addUserPost($userId): JsonResponse
@@ -56,7 +56,7 @@ class Post extends Controlls{
             'timestamp' => time(),
         ];
 
-        return JsonResponse::make(200, $data);
+        return JsonResponse::make($data, statusCode: 200);
     }
 
     public function getUserOfPost($postId): JsonResponse
@@ -73,7 +73,7 @@ class Post extends Controlls{
             'timestamp' => time(),
         ];
 
-        return JsonResponse::make(200, $data);
+        return JsonResponse::make($data, statusCode: 200);
     }
 
     public function getPosts(): View

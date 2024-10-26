@@ -63,7 +63,7 @@ class Home extends Controlls{
             'timestamp' => $time,
         ];
 
-        return JsonResponse::make(200, $data);
+        return JsonResponse::make($data, statusCode: 200);
     }
 
     public function getValue($value): JsonResponse
@@ -73,7 +73,7 @@ class Home extends Controlls{
             'timestamp' => time(),
         ];
 
-        return JsonResponse::make(200, $data);
+        return JsonResponse::make($data, statusCode: 200);
     }
 
     public function getBook($shelfId, $bookId): JsonResponse
@@ -84,7 +84,7 @@ class Home extends Controlls{
             'timestamp' => time(),
         ];
 
-        return JsonResponse::make(200, $data);
+        return JsonResponse::make($data, statusCode: 200);
     }
 
     public function getNegativeNumber($num): JsonResponse
@@ -94,7 +94,7 @@ class Home extends Controlls{
             'timestamp' => time(),
         ];
 
-        return JsonResponse::make(200, $data);
+        return JsonResponse::make($data, statusCode: 200);
     }
 
     public function noView(): View
