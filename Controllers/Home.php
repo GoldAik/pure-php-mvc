@@ -2,13 +2,13 @@
 
 declare(strict_types = 1);
 
-namespace App\Controlls;
+namespace App\Controllers;
 
 require_once \APP_PATH . '/Http/JsonResponse.php';
 require_once \APP_PATH . '/Models/User.php';
 require_once \APP_PATH . '/Models/UserModel.php';
 
-use App\Controlls\_Base\Controlls;
+use App\Controllers\_Base\Controller;
 
 use App\Http\Response;
 use App\Http\JsonResponse;
@@ -17,7 +17,7 @@ use App\Http\View;
 use App\Models\User;
 use App\Models\UserModel;
 
-class Home extends Controlls{
+class Home extends Controller{
     public function home(): View
     {
         return View::make('home');

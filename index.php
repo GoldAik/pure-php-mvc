@@ -20,49 +20,49 @@ new App\ErrorHandler();
 require_once \APP_PATH . '/Router.php';
 require_once \APP_PATH . '/App.php';
 
-require_once \APP_PATH. '/Controlls/_Base/Controlls.php';
-require_once \APP_PATH. '/Controlls/Home.php';
-require_once \APP_PATH. '/Controlls/User.php';
-require_once \APP_PATH. '/Controlls/Post.php';
+require_once \APP_PATH. '/Controllers/_Base/Controller.php';
+require_once \APP_PATH. '/Controllers/Home.php';
+require_once \APP_PATH. '/Controllers/User.php';
+require_once \APP_PATH. '/Controllers/Post.php';
 
 $router = new App\Router();
 
 $router
-    ->get('/', [App\Controlls\Home::class, 'home'])
-    ->get('/home', [App\Controlls\Home::class, 'home'])
-    ->get('/home-with-params', [App\Controlls\Home::class, 'homeWithParams'])
+    ->get('/', [App\Controllers\Home::class, 'home'])
+    ->get('/home', [App\Controllers\Home::class, 'home'])
+    ->get('/home-with-params', [App\Controllers\Home::class, 'homeWithParams'])
     
     // display data send to get metod /get-request?m=
-    ->get('/get-request', [App\Controlls\Home::class, 'getRequest'])
-    ->get('/get-request-send-response', [App\Controlls\Home::class, 'getRequestSendResponse'])
+    ->get('/get-request', [App\Controllers\Home::class, 'getRequest'])
+    ->get('/get-request-send-response', [App\Controllers\Home::class, 'getRequestSendResponse'])
 
     //json response
-    ->get('/get-request-send-response-as-json', [App\Controlls\Home::class, 'getRequestSendJsonResponse'])
+    ->get('/get-request-send-response-as-json', [App\Controllers\Home::class, 'getRequestSendJsonResponse'])
 
     //regex
-    ->get('/value/{value}', [App\Controlls\Home::class, 'getValue'])
-    ->get('/shelf/{<+int>:shelf_id}/book/{<+int>:book_id}', [App\Controlls\Home::class, 'getBook'])
-    ->get('/negative-numbers/{<-int>:num}', [App\Controlls\Home::class, 'getNegativeNumber'])
+    ->get('/value/{value}', [App\Controllers\Home::class, 'getValue'])
+    ->get('/shelf/{<+int>:shelf_id}/book/{<+int>:book_id}', [App\Controllers\Home::class, 'getBook'])
+    ->get('/negative-numbers/{<-int>:num}', [App\Controllers\Home::class, 'getNegativeNumber'])
     
-    ->get('/get/users', [App\Controlls\User::class, 'getUsers'])
+    ->get('/get/users', [App\Controllers\User::class, 'getUsers'])
 
     //orm
-    ->get('/users', [App\Controlls\User::class, 'getUsersModels'])
-    ->get('/user/{<+int>:id}', [App\Controlls\User::class, 'getUser'])
-    ->get('/delete/user/{<+int>:id}', [App\Controlls\User::class, 'deleteUser'])
-    ->get('/edit/user/{<+int>:id}/username/{username}', [App\Controlls\User::class, 'editUsername'])
-    ->get('/add/user/{username}', [App\Controlls\User::class, 'addUser'])
+    ->get('/users', [App\Controllers\User::class, 'getUsersModels'])
+    ->get('/user/{<+int>:id}', [App\Controllers\User::class, 'getUser'])
+    ->get('/delete/user/{<+int>:id}', [App\Controllers\User::class, 'deleteUser'])
+    ->get('/edit/user/{<+int>:id}/username/{username}', [App\Controllers\User::class, 'editUsername'])
+    ->get('/add/user/{username}', [App\Controllers\User::class, 'addUser'])
 
     //relations
-    ->get('/user/{<+int>:id}/posts', [App\Controlls\Post::class, 'getUserPosts'])
-    ->get('/user/{<+int>:id}/post/add', [App\Controlls\Post::class, 'addUserPost'])
-    ->get('/post/{<+int>:id}/user', [App\Controlls\Post::class, 'getUserOfPost'])
+    ->get('/user/{<+int>:id}/posts', [App\Controllers\Post::class, 'getUserPosts'])
+    ->get('/user/{<+int>:id}/post/add', [App\Controllers\Post::class, 'addUserPost'])
+    ->get('/post/{<+int>:id}/user', [App\Controllers\Post::class, 'getUserOfPost'])
 
     //view layout
-    ->get('/posts', [App\Controlls\Post::class, 'getPosts'])
+    ->get('/posts', [App\Controllers\Post::class, 'getPosts'])
     
     // no view
-    ->get('/no-view', [App\Controlls\Home::class, 'noView']);
+    ->get('/no-view', [App\Controllers\Home::class, 'noView']);
 
 $app = new App\App($router);
 $app->run();

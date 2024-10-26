@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace App\Controlls\_Base;
+namespace App\Controllers\_Base;
 
-class Controlls {
+class Controller {
     public function __construct(protected \App\Http\Request $request) {
 
     }

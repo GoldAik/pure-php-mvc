@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace App\Controlls;
+namespace App\Controllers;
 
 require_once \APP_PATH . '/Http/JsonResponse.php';
 require_once \APP_PATH . '/Http/View.php';
@@ -10,7 +10,7 @@ require_once \APP_PATH . '/Http/View.php';
 require_once \APP_PATH . '/Models/UserModel.php';
 require_once \APP_PATH . '/Models/PostModel.php';
 
-use App\Controlls\_Base\Controlls;
+use App\Controllers\_Base\Controller;
 
 use App\Http\JsonResponse;
 use App\Http\View;
@@ -19,7 +19,7 @@ use App\Models\UserModel;
 use App\Models\PostModel;
 
 
-class Post extends Controlls{
+class Post extends Controller{
     public function getUserPosts($userId): JsonResponse
     {
         $user = UserModel::find($userId);
