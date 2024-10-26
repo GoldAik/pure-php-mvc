@@ -37,7 +37,7 @@ class Router{
         if($action)
             return $this->executeAction($action, $request);
 
-        foreach ($this->dynamicRoutes[$requestMethod] as $route) {
+        foreach ($this->dynamicRoutes[$requestMethod] ?? [] as $route) {
             if (preg_match($this->convertToRegex($route['pattern']), $path, $matches)) {
                 array_shift($matches);
                 return $this->executeAction($route['action'], $request, $matches);

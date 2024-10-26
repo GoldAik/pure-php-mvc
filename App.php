@@ -53,7 +53,7 @@ class App{
             Log::warning($errstr);
 
             if(\DEBUG_MODE)
-                echo $e;
+                echo $errstr;
             else
                 return true;
         }
