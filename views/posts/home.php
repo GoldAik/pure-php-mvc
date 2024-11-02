@@ -13,7 +13,7 @@
                 <?= htmlspecialchars($post->id ?? '') ?>
             </span>
             <span class="content">
-                <?= htmlspecialchars($post->content ?? '') ?>
+                <?= nl2br(htmlspecialchars($post->content ?? '')) ?>
             </span>
             <span class="user-id">
                 <?= htmlspecialchars($post->user_id ?? '') ?>

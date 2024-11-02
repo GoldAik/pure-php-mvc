@@ -20,6 +20,8 @@ new App\ErrorHandler();
 require_once \APP_PATH . '/Router.php';
 require_once \APP_PATH . '/App.php';
 
+require_once \APP_PATH . '/Utils/CSRFTokenHandler.php';
+
 require_once \APP_PATH. '/Controllers/_Base/Controller.php';
 require_once \APP_PATH. '/Controllers/Home.php';
 require_once \APP_PATH. '/Controllers/User.php';
@@ -60,6 +62,10 @@ $router
 
     //view layout
     ->get('/posts', [App\Controllers\Post::class, 'getPosts'])
+    
+    //csrf tokens
+    ->get('/user/{<+int>:userId}/posts/create', [App\Controllers\Post::class, 'create'])
+    ->post('/user/{<+int>:userId}/posts/create', [App\Controllers\Post::class, 'postCreate'])
     
     // no view
     ->get('/no-view', [App\Controllers\Home::class, 'noView']);

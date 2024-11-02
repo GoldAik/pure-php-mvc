@@ -19,6 +19,9 @@ use App\Models\UserModel;
 use App\Models\PostModel;
 
 
+use App\Utils\CSRFTokenHandler;
+
+
 class Post extends Controller{
     public function getUserPosts($userId): JsonResponse
     {
@@ -86,5 +89,29 @@ class Post extends Controller{
         ];
 
         return View::make('posts/home', ['data' => $data]);
+    }
+
+    public function create(int $userId): View
+    {
+        return View::make('posts/create');
+    }
+
+    public function postCreate(int $userId): View
+    {
+        $r = $this->request;
+        $csrfToken = $r->postAndUnset(CSRFTokenHandler::HTML_KEY_NAME);
+        if(!CSRFTokenHandler::isValid($csrfToken)) return View::make('errors/invalid-token');
+
+        $post = new PostModel;
+        $post->content = $r->postAndUnset('content');
+        $post->user_id = $userId;
+        $success = $post->save();
+
+        $data = [
+            'success' => $success,
+            'content' => $r->postAndUnset('content'),
+        ];
+        
+        return View::make('posts/create', ['data' => $data]);
     }
 }

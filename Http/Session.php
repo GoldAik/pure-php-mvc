@@ -15,6 +15,7 @@ class Session
     {
         ini_set('session.use_only_cookies', 1);
         ini_set('session.use_strict_mode', 1);
+        ini_set('session.cookie_samesite', "Lux");
 
         session_set_cookie_params([
             'lifetime' => self::LIFETIME,
