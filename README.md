@@ -3,7 +3,7 @@
 A project based on the MVC pattern, featuring a simple and lightweight implementation of selected functionalities in pure PHP. The project was created without using external packages or libraries to demonstrate fundamental solutions.
 
 **Note!**  
-This project is provided solely for educational and inspirational purposes. It has not been tested for security, performance, or stability. It should not be used in production environments or for hosting real websites.
+This project is provided solely for educational and inspirational purposes. It has not been tested for security, performance, or stability. **It should not be used in production environments or for hosting real websites**.
 
 ---
 
