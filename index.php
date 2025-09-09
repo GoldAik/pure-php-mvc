@@ -8,6 +8,8 @@ define('LOG_PATH', __DIR__ . '/logs');
 define('DOMAIN', '127.0.0.1');
 define('DEBUG_MODE', true);
 
+require_once APP_PATH . '/autoloader.php';
+
 if(file_exists(\APP_PATH . '/ErrorHandler.php'))
     require_once \APP_PATH . '/ErrorHandler.php';
 else{
@@ -16,16 +18,6 @@ else{
 }
 
 new App\ErrorHandler();
-
-require_once \APP_PATH . '/Router.php';
-require_once \APP_PATH . '/App.php';
-
-require_once \APP_PATH . '/Utils/CSRFTokenHandler.php';
-
-require_once \APP_PATH. '/Controllers/_Base/Controller.php';
-require_once \APP_PATH. '/Controllers/Home.php';
-require_once \APP_PATH. '/Controllers/User.php';
-require_once \APP_PATH. '/Controllers/Post.php';
 
 $router = new App\Router();
 

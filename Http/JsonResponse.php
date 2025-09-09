@@ -4,8 +4,6 @@ declare(strict_types = 1);
 
 namespace App\Http;
 
-require_once \APP_PATH . '/Http/Response.php';
-
 use App\Http\Response;
 
 class JsonResponse extends Response

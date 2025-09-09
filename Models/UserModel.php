@@ -4,11 +4,6 @@ declare(strict_types = 1);
 
 namespace App\Models;
 
-require_once \APP_PATH . '/Models/_Base/DatabaseModel.php';
-require_once \APP_PATH . '/Models/PostModel.php';
-
-require_once \APP_PATH . '/Models/_Base/Validator.php';
-
 use App\Models\_Base\DatabaseModel;
 use App\Models\PostModel;
 

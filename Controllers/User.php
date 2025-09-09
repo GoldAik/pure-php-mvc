@@ -4,10 +4,6 @@ declare(strict_types = 1);
 
 namespace App\Controllers;
 
-require_once \APP_PATH . '/Http/JsonResponse.php';
-require_once \APP_PATH . '/Models/User.php';
-require_once \APP_PATH . '/Models/UserModel.php';
-
 use App\Controllers\_Base\Controller;
 
 use App\Http\JsonResponse;

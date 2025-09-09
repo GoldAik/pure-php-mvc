@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Models\_Base;
 
-require_once \APP_PATH . '/Models/_Base/Database.php';
+
 
 use App\Models\_Base\Database;
 use App\Log;

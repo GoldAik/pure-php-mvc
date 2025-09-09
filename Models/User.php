@@ -4,8 +4,6 @@ declare(strict_types = 1);
 
 namespace App\Models;
 
-require_once \APP_PATH . '/Models/_Base/DatabaseDecorator.php';
-
 use App\Models\_Base\DatabaseDecorator;
 
 class User extends DatabaseDecorator{

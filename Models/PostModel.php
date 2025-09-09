@@ -4,8 +4,6 @@ declare(strict_types = 1);
 
 namespace App\Models;
 
-require_once \APP_PATH . '/Models/_Base/DatabaseModel.php';
-
 use App\Models\_Base\DatabaseModel;
 use App\Models\UserModel;
 

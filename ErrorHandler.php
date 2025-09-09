@@ -4,8 +4,6 @@ declare(strict_types = 1);
 
 namespace App;
 
-require_once \APP_PATH . '/Log.php';
-
 use App\Log;
 
 class ErrorHandler

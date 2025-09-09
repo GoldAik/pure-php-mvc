@@ -4,8 +4,8 @@ declare(strict_types = 1);
 
 namespace App\Models\_Base;
 
-require_once \APP_PATH . '/Models/_Base/DatabaseDecorator.php';
-require_once \APP_PATH . '/Models/_Base/Validator.php';
+
+
 
 use App\Models\_Base\DatabaseDecorator;
 use App\Models\_Base\Validator;
