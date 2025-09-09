@@ -2,9 +2,9 @@
 
 return function (string $prefix = 'App\\', string $dir = 'src/'): void {
     \spl_autoload_register(function ($class) use ($prefix, $dir): bool {
-        $prefixNamespace = $prefix;
+        $prefixPattern = '/^' . \preg_quote($prefix) . '/';
         
-        $class = \str_replace($prefixNamespace, $dir, $class);
+        $class = \preg_replace($prefixPattern, $dir, $class);
         
         $path = \str_replace('\\', '/', $class) . '.php';
         $absolutePath = __DIR__ . '/' . $path;
