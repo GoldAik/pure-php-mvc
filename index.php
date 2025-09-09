@@ -8,7 +8,7 @@ define('LOG_PATH', __DIR__ . '/logs');
 define('DOMAIN', '127.0.0.1');
 define('DEBUG_MODE', true);
 
-require_once APP_PATH . '/autoloader.php';
+(require_once APP_PATH . '/autoloader.php')(prefix: 'App\\', dir: '');
 
 if(file_exists(\APP_PATH . '/ErrorHandler.php'))
     require_once \APP_PATH . '/ErrorHandler.php';

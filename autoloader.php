@@ -1,19 +1,19 @@
 <?php
 
-\spl_autoload_register(function ($class): bool {
-    $prefixNamespace = 'App\\';
+return function (string $prefix = 'App\\', string $dir = 'src/'): void {
+    \spl_autoload_register(function ($class) use ($prefix, $dir): bool {
+        $prefixNamespace = $prefix;
+        
+        $class = \str_replace($prefixNamespace, $dir, $class);
+        
+        $path = \str_replace('\\', '/', $class) . '.php';
+        $absolutePath = __DIR__ . '/' . $path;
 
-    if (\str_starts_with($class, $prefixNamespace)) {
-        $class = \substr($class, \strlen($prefixNamespace));
-    }
-    
-    $path = \str_replace('\\', '/', $class) . '.php';
-    $absolutePath = __DIR__ . '/' . $path;
+        if (! \file_exists($absolutePath)) {
+            return false;
+        }
 
-    if (! \file_exists($absolutePath)) {
-        return false;
-    }
-
-    require_once $absolutePath;
-    return true;
-});
+        require_once $absolutePath;
+        return true;
+    });
+};
