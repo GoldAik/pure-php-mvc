@@ -7,10 +7,8 @@ namespace App;
 use App\Router;
 use App\Log;
 
-use App\Http\View;
 use App\Http\Request;
 use App\Http\Session;
-use Error;
 
 class App{
     private Router $router;

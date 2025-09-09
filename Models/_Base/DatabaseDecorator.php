@@ -4,8 +4,6 @@ declare(strict_types = 1);
 
 namespace App\Models\_Base;
 
-
-
 use App\Models\_Base\Database;
 use App\Log;
 

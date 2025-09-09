@@ -7,8 +7,6 @@ namespace App\Models;
 use App\Models\_Base\DatabaseModel;
 use App\Models\PostModel;
 
-use App\Models\_Base\Validator;
-
 class UserModel extends DatabaseModel {
     protected static $table = 'Users';
 

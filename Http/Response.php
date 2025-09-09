@@ -4,8 +4,6 @@ declare(strict_types = 1);
 
 namespace App\Http;
 
-use App\App;
-
 class Response
 {
     const DEFAULT_HEADER = 'Content-Type: text/html; charset=UTF-8';

@@ -10,9 +10,6 @@ use App\Http\Response;
 use App\Http\JsonResponse;
 use App\Http\View;
 
-use App\Models\User;
-use App\Models\UserModel;
-
 class Home extends Controller{
     public function home(): View
     {
