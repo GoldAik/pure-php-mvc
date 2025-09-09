@@ -19,6 +19,7 @@ The project implements, among others:
 - Session management
 - View rendering with or without a template engine
 - CSRF Token
+- Autoloader
 
 ---
 
